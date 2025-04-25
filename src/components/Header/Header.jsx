@@ -25,19 +25,20 @@ const Header = () => {
     const googleProvider = new GoogleAuthProvider();
     signInWithPopup(auth, googleProvider)
       .then(async (result) => {
+        
+
         const user = result.user;
+
         if (user) {
-
           setCurrentUser(user);
-
           // Tạo tham chiếu 
           const userRef = doc(database, "users", user.uid);
           // Truy vấn
           const userSnap = await getDoc(userRef);
-
           // Nếu chưa có dữ liệu thì thực hàm này
           if (userSnap.exists()) {
             const data = userSnap.data();
+            console.log(data)
             setRoleUser(data.role);
             console.log("User đã tồn tại. Role:", data.role);
           }
@@ -79,7 +80,6 @@ const Header = () => {
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
       if (user) {
         setCurrentUser(user);
-        console.log(user)
         const userSnap = await getDoc(doc(database, "users", user.uid));
         if (userSnap.exists()) {
           setRoleUser(userSnap.data().role);
@@ -91,7 +91,7 @@ const Header = () => {
     });
 
     return () => unsubscribe();
-  }, [currentUser]);
+  }, []);
 
 
   return (

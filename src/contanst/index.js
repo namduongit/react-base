@@ -53,3 +53,49 @@ export const adminItem = [
         value: 'bill'
     },
 ]
+
+export const navCategories = [
+    {
+        label: 'Hải sản tươi sống',
+        value: 'seafood'
+    },
+    {
+        label: 'Hải sản chế biến',
+        value: 'cookfood'
+    },
+    {
+        label: 'Sashimi Nhật Bản',
+        value: 'sashimi'
+    },
+    {
+        label: 'Đồ phụ',
+        value: 'different'
+    },
+    {
+        label: 'Sản phẩm khuyến mãi',
+        value: 'khuyenmai'
+    },
+]
+
+export const unit = [
+    {
+        label: 'kg',
+        value: 'kg'
+    },
+    {
+        label: 'đĩa',
+        value: 'dia'
+    },
+    {
+        label: 'bát',
+        value: 'bat'
+    },
+    {
+        label: 'tuýt',
+        value: 'tuyt'
+    },
+    {
+        label: 'set',
+        value: 'set'
+    }
+]

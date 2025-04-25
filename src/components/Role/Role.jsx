@@ -8,10 +8,10 @@ import { Link } from 'react-router-dom';
 
 
 const Role = ({ bienTruyenVao }) => {
-    console.log("Quyền hiện tại:", bienTruyenVao);
-    console.log(userItem)
-    console.log(staffItem)
-    console.log(adminItem)
+    // console.log("Quyền hiện tại:", bienTruyenVao);
+    // console.log(userItem)
+    // console.log(staffItem)
+    // console.log(adminItem)
     return (
         <div style={{
             marginTop: "90px",
