@@ -1,3 +1,5 @@
+// Buổi 19-04
+// Bước 1: Tạo quyền theo từng nhóm quyền (chức năng theo quyền)
 export const userItem = [
     {
         label: 'Theo dõi đơn hàng',
@@ -54,14 +56,18 @@ export const adminItem = [
     },
 ]
 
+
+
+// Buổi 25-04
+// Bước 1: Khai báo danh mục và đơn vị đo lường
 export const navCategories = [
+    {
+        label: 'Hải sản chế biến',
+        value: 'hotpot'
+    },
     {
         label: 'Hải sản tươi sống',
         value: 'seafood'
-    },
-    {
-        label: 'Hải sản chế biến',
-        value: 'cookfood'
     },
     {
         label: 'Sashimi Nhật Bản',
@@ -69,15 +75,16 @@ export const navCategories = [
     },
     {
         label: 'Đồ phụ',
-        value: 'different'
+        value: 'side'
     },
     {
         label: 'Sản phẩm khuyến mãi',
-        value: 'khuyenmai'
+        value: 'promotion'
     },
 ]
 
-export const unit = [
+
+export const units = [
     {
         label: 'kg',
         value: 'kg'
@@ -88,11 +95,15 @@ export const unit = [
     },
     {
         label: 'bát',
-        value: 'bat'
+        value: 'bat',
     },
     {
-        label: 'tuýt',
-        value: 'tuyt'
+        label: 'tuýp',
+        value: 'tuyp'
+    },
+    {
+        label: 'lít',
+        value: 'lit'
     },
     {
         label: 'set',

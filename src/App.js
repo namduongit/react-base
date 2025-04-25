@@ -29,6 +29,7 @@ function App() {
 
           <Routes>
             
+            
             <Route path='/' element={<Main />}></Route>
             <Route path='/user/cart' element={<CartPage />}></Route>
             <Route path='/user/history' element={<HistoryPage />}></Route>

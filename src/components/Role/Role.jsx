@@ -1,17 +1,17 @@
+// Bước 2: import lại các chức năng đã tạo bên kia 
 import { userItem, staffItem, adminItem } from "../../contanst";
 
+// Bước 3: import Font-end để tạo ra giao diện
+// Có đổi tên lại 1 trong 2 thẻ Link để không bị trùng
 import { AppBar, Container, Box, Button, Link as LinkMaterial } from "@mui/material";
 
-// Link as LinkMaterial là thẻ a trong HTML
-
+// Bước 4: import thẻ được dùng để định hướng trong Router
 import { Link } from 'react-router-dom';
 
 
-const Role = ({ bienTruyenVao }) => {
-    // console.log("Quyền hiện tại:", bienTruyenVao);
-    // console.log(userItem)
-    // console.log(staffItem)
-    // console.log(adminItem)
+// Bước 5: Tạo component
+const Role = ({ bienTruyenVao }) => { // Truyền vào lại quyền
+
     return (
         <div style={{
             marginTop: "90px",

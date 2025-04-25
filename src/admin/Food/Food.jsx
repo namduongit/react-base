@@ -1,119 +1,96 @@
-import { navCategories } from "../../contanst";
-import { unit } from "../../contanst";
+// Bước 2: Import lại loại danh mục và tên đơn vị
+import { navCategories, units } from "../../contanst";
 
+// Những thứ để tạo nên giao diện
+import { Container, Box } from "@mui/material";
+import { Typography, TextField, Button} from "@mui/material";
+import { FormControl, InputLabel, Select, MenuItem } from "@mui/material";
 
-// Bước 2: Import các component có sẵn từ thư viện để tạo nên bố cục
-import { Container, Box, TextField, Typography, Button } from "@mui/material";
-import { FormControl, InputLabel, Select, MenuItem } from "@mui/material"
-
-// Bước 3: import khai báo tạm thời và hàm thay đổi giá trị của biến khai báo
+// Khai báo tạm thời
 import { useState } from "react";
 
-// Bước 4: import những thứ dùng để tương tác với cơ sở dữ liệu
-
+// Import database bên firebase.js, các hàm có sẵn từ thư viện firestore để tương tác tới cơ sở dữ liệu
 import { database } from "../../firebase/firebase";
 import { addDoc, collection } from "firebase/firestore";
 
 
+// Bước 3: Tạo trang
 const FoodPage = () => {
 
-    // Bước 5: Khai báo các giá trị sẽ gửi lên server
     const [nameProduct, setNameProduct] = useState('');
-    const [descriptionProduct, setDiscriptonProduct] = useState('');
+    const [descriptionProduct, setDescriptionProduct] = useState('');
     const [noteProduct, setNoteProduct] = useState('');
     const [categoryProduct, setCategoryProduct] = useState('');
     const [unitProduct, setUnitProduct] = useState('');
-    const [priceProduct, setPriceProduct]= useState('');
-    const [urlImageProduct, setURLImageProduct] = useState('');
+    const [priceProduct, setPriceProduct] = useState('');
 
-    const [typeProduct, setTypeProduct] = useState('');
+    const [imageProduct, setImageProduct] = useState('');
 
 
-    // Bước 8:  Viết hàm để gửi lên server
+    // Tạo hàm để tương tác lên cơ sở dữ liệu
     const handleSubmit = async () => {
-        if (nameProduct == '' || descriptionProduct == '' || noteProduct == '' || unitProduct == '' || priceProduct == '') {
-            alert('Bạn chưa nhập đủ thông tin');
+        if (nameProduct == '' || descriptionProduct == '' || noteProduct == '' || unitProduct == '' || priceProduct == '' || imageProduct == '') {
+            alert('Chưa nhập đủ dữ liệu');
             return;
         }
 
-        const menuCollectionRef = collection(database, "foods");
-        await addDoc(menuCollectionRef, {
+        const foodRef = collection(database, "foods");
+        await addDoc(foodRef, {
             name: nameProduct,
             description: descriptionProduct,
             note: noteProduct,
             category: categoryProduct,
             unit: unitProduct,
             price: priceProduct,
-            image: urlImageProduct
+            image: imageProduct
         });
 
-        alert('Đã thêm sản phẩm');
-        
+        alert('Thêm sản phẩm thành công');
     }
 
-    // Bước 7: Tạo form
+
+    // Bước 4: Tạo giao diện
     return (
         <Container>
             <Box>
-                <Typography sx={{
-                    marginTop: "50px",
-                    fontWeight: "bold",
-                    textAlign: "center"
-                }}>THÊM SẢN PHẨM</Typography>
-                <Typography sx={{
-                    textAlign: "center"
-                }}>Vui lòng điền đủ thông tin sản phẩm</Typography>
+                <Typography sx={{textAlign: "center", fontWeight: "bold", marginTop: "20px", fontSize: "24px"}}>THÊM SẢN PHẨM</Typography>
+                <Typography sx={{textAlign: "center"}}>Vui lòng điền thông tin sản phẩm</Typography>
 
-
-                <form>
-
-                <TextField sx={{marginBottom: "20px"}} fullWidth label="Thêm sản phẩm" value={nameProduct} onChange={(event) => setNameProduct(event.target.value)}></TextField>
+                <TextField sx={{marginTop: "20px"}} fullWidth label="Tên sản phẩm" value={nameProduct} onChange={(event) => setNameProduct(event.target.value)}></TextField>
                 
-                <TextField sx={{marginBottom: "20px"}} fullWidth label="Mô tả" value={descriptionProduct} onChange={(event) => setDiscriptonProduct(event.target.value)}></TextField>
-
-                <TextField sx={{marginBottom: "20px"}} fullWidth label="Ghi chú" value={noteProduct} onChange={(event) => setNoteProduct(event.target.value)}></TextField>
+                <TextField type="number" sx={{marginTop: "20px"}} fullWidth label="Giá sản phẩm" value={priceProduct} onChange={(event) => setPriceProduct(event.target.value)}></TextField>
                 
-                <TextField sx={{marginBottom: "20px"}} fullWidth label="Giá tiền" value={priceProduct} onChange={(event) => setPriceProduct(event.target.value)}></TextField>
+                <TextField sx={{marginTop: "20px"}} fullWidth label="Mô tả sản phẩm" value={descriptionProduct} onChange={(event) => setDescriptionProduct(event.target.value)}></TextField>
                 
-                <FormControl sx={{marginBottom: "20px"}} fullWidth>
+                <TextField sx={{marginTop: "20px"}} fullWidth label="Ghi chú sản phẩm" value={noteProduct} onChange={(event) => setNoteProduct(event.target.value)}></TextField>
+                
+                <TextField sx={{marginTop: "20px"}} fullWidth label="Link hình ảnh" value={imageProduct} onChange={(event) => setImageProduct(event.target.value)}></TextField>
+            
+                <FormControl sx={{marginTop: "20px"}} fullWidth>
                     <InputLabel>Danh mục</InputLabel>
-
                     <Select
-                        label="Loại sản phẩm"
                         value={categoryProduct}
                         onChange={(event) => setCategoryProduct(event.target.value)}
-                        fullWidth
                     >
-
-                        {navCategories.map((item) => {
-                            return <MenuItem key={item.value} value={item.value}>{item.label}</MenuItem>
-                        })}
-
+                        {navCategories.map((item) => (
+                            <MenuItem key={item.value} value={item.value}>{item.label}</MenuItem>
+                        ))}
                     </Select>
                 </FormControl>
-
-                <FormControl sx={{marginBottom: "20px"}} fullWidth>
+                
+                <FormControl sx={{marginTop: "20px"}} fullWidth>
                     <InputLabel>Đơn vị</InputLabel>
-
                     <Select
-                        label="Đơn vị"
                         value={unitProduct}
                         onChange={(event) => setUnitProduct(event.target.value)}
-                        fullWidth
                     >
-
-                        {unit.map((item) => {
-                            return <MenuItem key={item.value} value={item.value}>{item.label}</MenuItem>
-                        })}
-
+                        {units.map((item) => (
+                            <MenuItem key={item.value} value={item.value}>{item.label}</MenuItem>
+                        ))}
                     </Select>
                 </FormControl>
 
-                <TextField sx={{marginBottom: "20px"}} fullWidth label="Link hình ảnh" value={urlImageProduct} onChange={(event) => setURLImageProduct(event.target.value)}></TextField>
-
-                <Button onClick={handleSubmit} fullWidth sx={{marginTop: "20px", backgroundColor: "blue", color: "white", padding: "10px 20px"}}>Thêm sản phẩm</Button>
-                </form>
-
+                <Button onClick={handleSubmit} fullWidth sx={{marginTop: "20px"}} variant="contained">Thêm sản phẩm</Button>
 
             </Box>
         </Container>
