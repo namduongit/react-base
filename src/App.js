@@ -19,6 +19,8 @@ import AccountPage from './admin/Account/Account';
 import StaffPage from './admin/Staff/Staff';
 import BillPage from './admin/Bill/Bill';
 
+import Detail from './pages/Detail/Detail';
+
 function App() {
   return (
 
@@ -44,8 +46,11 @@ function App() {
             <Route path='/admin/staff' element={<StaffPage />}></Route>
             <Route path='/admin/bill' element={<BillPage />}></Route>
 
-
-
+            {/* Router để hiển thị sản phẩm */}
+            {/* Đầu tiên hiển thị chưa có nội dung là để /detail/
+                Tiếp đến sửa đổi để theo id
+            */}
+            <Route path='/detail/:id' element={<Detail />}></Route>
 
 
           </Routes>
