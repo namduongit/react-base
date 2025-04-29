@@ -37,6 +37,7 @@ const Main = () => {
         {/* <Feature type={'hotpot'} img={anh3} name={'Lẩu hải sản'} /> */}
         <Feature name={"Hải sản chế biến"} value={"hotpot"} />
 
+        <Feature name={"Hải sản biến"} value={"seafood"} />
 
         </>
     );
