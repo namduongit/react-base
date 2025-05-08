@@ -34,10 +34,11 @@ const Main = () => {
             </Grid>
         </Container>
 
-        {/* <Feature type={'hotpot'} img={anh3} name={'Lẩu hải sản'} /> */}
-        <Feature name={"Hải sản chế biến"} value={"hotpot"} />
-
         <Feature name={"Hải sản biến"} value={"seafood"} />
+        {/* <Feature type={'hotpot'} img={anh3} name={'Lẩu hải sản'} /> */}
+        <Feature name={"Hải sản chế biến đã được đổi tên"} value={"hotpot"} />
+
+
 
         </>
     );

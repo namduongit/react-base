@@ -119,7 +119,11 @@ const Header = () => {
             <Avatar onClick={loginWithGoogle} sx={{ cursor: "pointer" }} />
           )}
 
-          <StorefrontIcon />
+          <LinkMaterial component={Link} to={"/user/cart"} sx={{
+            color: "white"
+          }}>
+              <StorefrontIcon /> 
+          </LinkMaterial>
 
         </Container>
 

@@ -62,7 +62,7 @@ export const adminItem = [
 // Bước 1: Khai báo danh mục và đơn vị đo lường
 export const navCategories = [
     {
-        label: 'Hải sản chế biến',
+        label: 'Hải sản chế biến 123',
         value: 'hotpot'
     },
     {
@@ -81,6 +81,10 @@ export const navCategories = [
         label: 'Sản phẩm khuyến mãi',
         value: 'promotion'
     },
+    {
+        label: 'New',
+        value: 'newItem'
+    }
 ]
 
 
